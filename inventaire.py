@@ -1,0 +1,1 @@
+screen.blit(str, (1000, 700))

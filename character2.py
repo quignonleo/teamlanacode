@@ -44,7 +44,7 @@ class monster:
         self.atk = atk
         self.deff = deff
         self.hp = hp
-        self.vitesse = vitesse
+        self.quickness = quickness
     
     def hp_modiff(self,vie):
         "la vie peut être négative ici"
