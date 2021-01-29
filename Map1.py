@@ -4,7 +4,7 @@ pg.init()
 screen = pg.display.set_mode((1000, 700))
 screen.fill((0, 0, 0))
 clock = pg.time.Clock()
-orange = (200, 0, 0)
+
 
 font=pg.font.Font('freesansbold.ttf', 20)
 
@@ -17,9 +17,9 @@ while running:
 
             for j, symbole in enumerate(ligne):
                 if symbole in ['.', '|', '-', '=', '+', '#']:
-                    text = font.render(symbole, 1, (150, 0, 0))
+                    text = font.render(symbole, 1, (255, 165, 0))
 
-                    screen.blit(text, (j*20+200, i*20))
+                    screen.blit(text, (j*20 + 100, i*20 + 150))
 
     for event in pg.event.get():
 
