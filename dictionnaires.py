@@ -7,13 +7,13 @@ dico_monstres = {
     "Jérémy Pervitesse" : monster(15, 5, 20, 1000),
     "Morgane Piko" : monster(30, 5, 10, 20),
     "Victor Pachy" : monster(50, 0, 20, 2),
-    "Boval" : monster(10, 10, 10, 20)
+    "Boval" : monster(10, 10, 10, 20),
     "Tibaldo Arrato Primo de la Manana de la Muerte de la Tolosa": monster(5, 50, 90, 5)
     }
 
 
 
-
+"""
 liste_endroits_possibles = []
 liste_endroits_possibles_monstres = []
 for i in range (1001):
@@ -31,3 +31,4 @@ screen[pos] = "o"
 pos = choice(liste_endroits_possibles_monstres)
 dico_map[pos] = choice(dico_monstres.keys())
 screen[pos] = "M"
+"""
