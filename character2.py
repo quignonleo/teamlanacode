@@ -3,21 +3,7 @@ import numpy as np
 import character
 
 
-Dico_equip = {
-"anneau_vie": equipment("anneau", 0, 0, 10),
-"épée longue":equipment("arme",10,0,0),
-"bouclier en bois":equipment("bouclier",0,10,0),
-"casque de mineur":equipment("casque",0,4,0),
-"armure de fer":equipment("armure",0,15,0),
-"pistolet laser":equipment("arme", 20, 0, 0),
-"maillot de l'OM":equipment("armure",1, 10, 15),
-"bob coloré":equipment("casque", 0, 14, 0),
-"porte de la meuh":equipment("bouclier", 10, 20, 0),
-"épée porteuse du tétanos":equipment("arme", 40, 0, -10),
-"foudre de Zeus":equipment("arme", 30, 0, 0),
-"grosse chevalière":equipment("anneau", 10, 0, 8),
-"perruque coupe mulet":equipment("casque", 5, 10, 5)
-}
+
 
 class Potion : 
 
@@ -68,3 +54,19 @@ class pnj :
     def __init__ (self,inventory,money):
         self.money = money
         self.inventory = inventory
+
+Dico_equip = {
+"anneau_vie": equipment("anneau", 0, 0, 10),
+"épée longue":equipment("arme",10,0,0),
+"bouclier en bois":equipment("bouclier",0,10,0),
+"casque de mineur":equipment("casque",0,4,0),
+"armure de fer":equipment("armure",0,15,0),
+"pistolet laser":equipment("arme", 20, 0, 0),
+"maillot de l'OM":equipment("armure",1, 10, 15),
+"bob coloré":equipment("casque", 0, 14, 0),
+"porte de la meuh":equipment("bouclier", 10, 20, 0),
+"épée porteuse du tétanos":equipment("arme", 40, 0, -10),
+"foudre de Zeus":equipment("arme", 30, 0, 0),
+"grosse chevalière":equipment("anneau", 10, 0, 8),
+"perruque coupe mulet":equipment("casque", 5, 10, 5)
+}
