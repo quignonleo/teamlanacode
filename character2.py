@@ -55,14 +55,14 @@ class pnj:
         self.money = money
         self.inventory = inventory
 
-Dico_equip = {
+dico_equip = {
 "anneau_vie": equipment("anneau", 0, 0, 10),
 "épée longue":equipment("arme",10,0,0),
 "bouclier en bois":equipment("bouclier",0,10,0),
 "casque de mineur":equipment("casque",0,4,0),
 "armure de fer":equipment("armure",0,15,0),
 "pistolet laser":equipment("arme", 20, 0, 0),
-"maillot de Lens":equipment("armure",1, 10, 15),
+"maillot de Lens":equipment("armure",1, 10, 35),
 "bob coloré":equipment("casque", 0, 14, 0),
 "porte de la meuh":equipment("bouclier", 10, 20, 0),
 "épée porteuse du tétanos":equipment("arme", 40, 0, -10),
