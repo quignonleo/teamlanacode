@@ -172,15 +172,17 @@ while running:
                 if event.type == pg.KEYDOWN : 
                     if event.key == pg.K_y :
                         text = font.render(str (marchand.inventory), 1, (255, 255, 255))
-                        screen.blit(text, 500,500)
+                        screen.blit(text, (500,500))
                         pg.display.update()
                     if event.key == pg.K_p :
                         running2 = False
+                        pg.display.update()
+                        screen.fill((0, 0, 0))
 
 
-        echange(perso,marchand,item)
+        #echange(perso,marchand,item)
 
-        print(f"vous avez acheté l'objet {print(item)}")
+        #print(f"vous avez acheté l'objet {print(item)}")
     pg.display.update()
     screen.fill((0, 0, 0))
 
