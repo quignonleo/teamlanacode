@@ -158,8 +158,40 @@ while running:
                 else : 
                     print ("vous etes mort") # Il faut stop le programme
                 
+
+            if list_map[i_0][j_0] == "µ" :
+                strmarchand = list_interactions[i_0][j_0]
+                marchand = dico_marchand[strmarchand]
+                #marchand.open_inventory()
+
+                #item = #selection de l'item
+
+                running2 = True
+                while running2 : 
+                    clock.tick(5)
+                    for event in pg.event.get() :
+                        if event.type == pg.QUIT:
+                                running2 = False
+                        if event.type == pg.KEYDOWN : 
+                            if event.key == pg.K_y :
+                                text = font.render(str (marchand.inventory), 1, (255, 255, 255))
+                                screen.blit(text, (500,500))
+                                pg.display.update()
+                                screen.fill((0, 0, 0))
+                            if event.key == pg.K_p :
+                                running2 = False
                 pg.display.update()
                 screen.fill((0, 0, 0))
+
+
+        #echange(perso,marchand,item)
+
+        #print(f"vous avez acheté l'objet {print(item)}")
+
+
+                pg.display.update()
+                screen.fill((0, 0, 0))
+                
     
     #screen.fill((0, 0, 0))
     if levels == []:
