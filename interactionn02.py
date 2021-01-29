@@ -91,10 +91,66 @@ while running:
                 #charact_pos = (i_0, j_0+1)
 
             if event.key == pg.K_i :
-                screen.fill((0, 0, 0))
-                for numero, item in perso.inventory.enumerate():
-                    text = font.render(i, 1, (255, 165, 0))
+                for item in perso.inventory:
+                    text = font.render(item, 1, (255, 165, 0))
                     screen.blit(text, (20*j, 700-20*len(item)))
+                if event.key == pg.K_1:
+                    item = perso.inventory[0]
+                    if type(item) == equipment:
+                        perso.equip(item)
+                    else : 
+                        perso.drink(item)
+                elif event.key == pg.K_2:
+                    item = perso.inventory[1]
+                    if type(item) == equipment:
+                        perso.equip(item)
+                    else : 
+                        perso.drink(item)
+                elif event.key == pg.K_3:
+                    item = perso.inventory[2]
+                    if type(item) == equipment:
+                        perso.equip(item)
+                    else : 
+                        perso.drink(item)
+                elif event.key == pg.K_4:
+                    item = perso.inventory[3]
+                    if type(item) == equipment:
+                        perso.equip(item)
+                    else : 
+                        perso.drink(item)
+                elif event.key == pg.K_5:
+                    item = perso.inventory[4]
+                    if type(item) == equipment:
+                        perso.equip(item)
+                    else : 
+                        perso.drink(item)
+                elif event.key == pg.K_6:
+                    item = perso.inventory[5]
+                    if type(item) == equipment:
+                        perso.equip(item)
+                    else : 
+                        perso.drink(item)
+                elif event.key == pg.K_7:
+                    item = perso.inventory[6]
+                    if type(item) == equipment:
+                        perso.equip(item)
+                    else : 
+                        perso.drink(item)
+                elif event.key == pg.K_8:
+                    item = perso.inventory[7]
+                    if type(item) == equipment:
+                        perso.equip(item)
+                    else : 
+                        perso.drink(item)
+                elif event.key == pg.K_9:
+                    item = perso.inventory[8]
+                    if type(item) == equipment:
+                        perso.equip(item)
+                    else : 
+                        perso.drink(item)
+
+
+                    
                 
 
     
