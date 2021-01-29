@@ -1,0 +1,6 @@
+vie = font.render(f'HP = {HP}', 1, (255, 255, 255))
+screen.blit(vie, (10, 600))
+attaque = font.render(f'attaque = {attaque}', 1, (255, 255, 255))
+screen.blit(attaque, (10, 620))
+defense = font.render(f'defense = {defense}', 1, (255, 255, 255))
+screen.blit(defense, (10, 640))
