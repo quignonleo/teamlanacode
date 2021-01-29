@@ -27,12 +27,12 @@ while running:
                 text = font.render(list_map[i][j], 1, (255, 165, 0))
                 screen.blit(text, (j*20 + 100, i*20 + 150))
             if list_map[i][j] == '@':
-                charact_pos = (j, i)
+                charact_pos = (i, j)
             
 
 
     what_it_replaces = '.' #on part du principe qu'à la bas il n'est pas dans un couloir
-    charact_pos = i_0, j_0
+    i_0, j_0 = charact_pos
     for event in pg.event.get():
 
         if event.type == pg.QUIT:
@@ -41,22 +41,22 @@ while running:
         if event.type == pg.KEYDOWN:
 
     #on suppose que les éléments sont stockés dans un list nommé "screen"
-            if event.key == pg.K_LEFT and list_map[i_0-1][j_0] not in ['a', '|', '-']:
-                list_map[i_0-1][j_0], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0-1][j_0]
+            if event.key == pg.K_q and list_map[i_0][j_0-1] not in ['a', '|', '-']:
+                list_map[i_0][j_0-1], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0][j_0-1]
                 what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
             
-            if event.key == pg.K_RIGHT and list_map[i_0+1][j_0] not in ['a', '|', '-']:
-                list_map[i_0+1][j_0], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0+1][j_0]
+            if event.key == pg.K_d and list_map[i_0][j_0+1] not in ['a', '|', '-']:
+                list_map[i_0][j_0+1], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0][j_0+1]
                 what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
                 #charact_pos = (i_0+1, j_0)
 
-            if event.key == pg.K_DOWN and list_map[i_0][j_0-1] not in ['a', '|', '-']:
-                list_map[i_0][j_0-1], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0][j_0-1]
+            if event.key == pg.K_s and list_map[i_0+1][j_0] not in ['a', '|', '-']:
+                list_map[i_0+1][j_0], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0+1][j_0]
                 what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
                 #charact_pos = (i_0, j_0-1)
 
-            if event.key == pg.K_UP and list_map[i_0][j_0+1] not in ['a', '|', '-']:
-                list_map[i_0][j_0+1], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0][j_0+1]
+            if event.key == pg.K_z and list_map[i_0-1][j_0] not in ['a', '|', '-']:
+                list_map[i_0-1][j_0], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0-1][j_0]
                 what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
                 #charact_pos = (i_0, j_0+1)
     
