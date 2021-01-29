@@ -5,6 +5,8 @@ clock = pg.time.clock()
 
 while True:
 
+    clock.tick(5)
+
     charact_position = (i, j)
     what_it_replaces = '.' #on part du principe qu'à la bas il n'est pas dans un couloir
 
