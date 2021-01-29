@@ -1,6 +1,7 @@
 import pygame as pg
 import sys
 
+
 pg.init()
 screen = pg.display.set_mode((1000, 700))
 screen.fill((0, 0, 0))
@@ -23,6 +24,9 @@ while running:
                     screen.blit(text, (j*20 + 100, i*20 + 150))
                 if symbole == '@':
                     charact_position = (j*20 + 100, i*20 + 150)
+
+
+
 
 
     for event in pg.event.get():

@@ -5,7 +5,7 @@ import character
 
 
 
-class Potion : 
+class Potion: 
 
     def __init__ (self,hp,atk,deff) : 
         self.bonus_hp = hp 
@@ -17,7 +17,7 @@ class Potion :
         char.atk = char.atk + self.bonus_atk
         char.deff = char.deff + self.bonus_deff
 
-class equipment : 
+class equipment: 
 
     def __init__(self, nature, atk, deff, hp): 
         self.atk = atk
@@ -37,7 +37,7 @@ class equipment :
         char.deff = char.deff - self.deff
 
 
-class monster : 
+class monster: 
     def __init__ (self, atk, deff,hp,vitesse) : 
         self.atk = atk
         self.deff = deff
@@ -49,7 +49,7 @@ class monster :
         self.hp = self.hp + vie
 
 
-class pnj : 
+class pnj: 
 
     def __init__ (self,inventory,money):
         self.money = money
@@ -62,11 +62,12 @@ Dico_equip = {
 "casque de mineur":equipment("casque",0,4,0),
 "armure de fer":equipment("armure",0,15,0),
 "pistolet laser":equipment("arme", 20, 0, 0),
-"maillot de l'OM":equipment("armure",1, 10, 15),
+"maillot de Lens":equipment("armure",1, 10, 15),
 "bob coloré":equipment("casque", 0, 14, 0),
 "porte de la meuh":equipment("bouclier", 10, 20, 0),
 "épée porteuse du tétanos":equipment("arme", 40, 0, -10),
 "foudre de Zeus":equipment("arme", 30, 0, 0),
 "grosse chevalière":equipment("anneau", 10, 0, 8),
-"perruque coupe mulet":equipment("casque", 5, 10, 5)
+"perruque coupe mulet":equipment("casque", 5, 10, 5),
+"vaccin contre le COVID" : equipment("arme", 50, 50, -50)
 }
