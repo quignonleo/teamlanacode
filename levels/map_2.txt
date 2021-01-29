@@ -1,7 +1,7 @@
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aa----------------aaaaaaaaaaaaaaaaaaaaaaaa-------aa
 a|................+######################+.......|a
-a|................|aaaaaaaaaaaaaaaaaaaaaa|....@=.|a
+a|................|aaaaaaaaaaaaaaaaaaaaaa|.....=.|a
 a|............----aaaaaaaaaaaaaaaaaaaaaaa|.......|a
 a|...........|aaaaaaaaaaaaaaaaaaaaaaaaaaaa-------aa
 a|...........|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -12,7 +12,7 @@ a|................|aaaaaaaaaaaaaaaaaa###+........|a
 aa-+--------------aaaaaaaaaa##########aa|........|a
 aaa#aaaaaaaaaaaaaaaaaaa-----+aaaaaaaaaaa|........|a
 aaa################aaa|......|aaaaaaaaaa|........|a
-aaaaaaaaaaaaaaaaaa####+......|aaaaaaaaaaa--------aa
+aaaaaaaaaaaaaaaaaa####+...@..|aaaaaaaaaaa--------aa
 aaaaaaaaaaaaaaaaaaaaaa|......|aaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaa------aaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
