@@ -10,7 +10,7 @@ class Potion:
     def __init__ (self,hp,atk,deff) : 
         self.bonus_hp = hp 
         self.bonus_atk = atk
-        self.bonus_def = deff
+        self.bonus_deff = deff
     
     def apply(self, char) :
         char.hp = char.hp + self.bonus_hp
@@ -57,9 +57,9 @@ class pnj:
         self.money = money
         self.inventory = inventory
     
-    def open_invetory(self) :
-        textsurface = myfont.render('Some Text', False, (0, 0, 0)) 
-        screen.blit(textsurface,(0,0))
+    def __repr__ (self):
+        return(f"{self.inventory[i] for i in range(0,len(self.inventory))}")
+    
 
 
 dico_equip = {
