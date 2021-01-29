@@ -55,7 +55,7 @@ class pnj:
         self.money = money
         self.inventory = inventory
 
-Dico_equip = {
+dico_equip = {
 "anneau_vie": equipment("anneau", 0, 0, 10),
 "épée longue":equipment("arme",10,0,0),
 "bouclier en bois":equipment("bouclier",0,10,0),
