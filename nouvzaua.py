@@ -1,18 +1,19 @@
 import pygame as pg
 import sys
 import numpy as np
-from random import choice
+from random import choice, randint
 from dictionnaires import *
 from character2 import *
 from character import *
 
-perso = character(100,[],[],100)
 
 pg.init()
 screen = pg.display.set_mode((1000, 700))
 screen.fill((0, 0, 0))
 clock = pg.time.Clock()
 
+perso = character(100, [], {'casque' : '', 'armure' :'', 'arme':'', 'bouclier' :'', 'anneau':''}, 100)
+perso.name = "Ralf le Rouges"
 
 font=pg.font.Font('freesansbold.ttf', 20)
 
@@ -25,7 +26,7 @@ with open('map_finale.txt', 'r') as file:
     n = len(list_map)
 
 
-
+# On remplit ici la map d'objets, marchands et monstres
 
 liste_endroits_possibles = []
 liste_endroits_possibles_monstres = []
@@ -60,10 +61,25 @@ pos = choice(liste_endroits_possibles)
 list_interactions[pos[0]][pos[1]] = randint(20, 100)
 list_map[pos[0]][pos[1]] = "$"
 
+
+
 what_it_replaces = '.'
 running = True 
 while running:
-    clock.tick(5)
+    clock.tick(10)
+
+
+    vie = font.render(f'HP = {perso.hp}', 1, (255, 255, 255))
+    screen.blit(vie, (10, 580))
+    attaque = font.render(f'attaque = {perso.atk}', 1, (255, 255, 255))
+    screen.blit(attaque, (10, 600))
+    defense = font.render(f'défense = {perso.deff}', 1, (255, 255, 255))
+    screen.blit(defense, (10, 620))
+    equipement = font.render(f'équipement = {perso.equipment}', 1, (255, 255, 255))
+    screen.blit(equipement, (10, 640))
+    monaie = font.render(f'{perso.name} possède {perso.money} $', 1, (255, 255, 255))
+    screen.blit(monaie, (10, 660))
+
 
     for i in range(n):
         for j in range(len(list_map[i])):
@@ -103,94 +119,91 @@ while running:
                 list_map[i_0-1][j_0], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0-1][j_0]
                 what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
                 #charact_pos = (i_0, j_0+1)
-            
+
             if event.key == pg.K_i :
-                for item in perso.inventory:
-                    text = font.render(item, 1, (255, 165, 0))
-                    screen.blit(text, (20*j, 700-20*len(item)))
-                if event.key == pg.K_1:
+                while True:
+                    p = 0
+                    for item in perso.inventory:
+                        text = font.render(item, 1, (255, 255, 255))
+                        screen.blit(text, (700-20*len(item), 20*p))
+                        p += 1
+                    if event.key == pg.K_i:
+                        break
+            if event.key == pg.K_1:
                     item = perso.inventory[0]
-                    if type(item) == equipment:
+                    if item in dico_equip.keys():
                         perso.equip(item)
                     else : 
-                        perso.drink(item)
-                elif event.key == pg.K_2:
-                    item = perso.inventory[1]
-                    if type(item) == equipment:
+                       perso.drink(item)
+            if event.key == pg.K_2:
+                item = perso.inventory[1]
+                if item in dico_equip.keys():
                         perso.equip(item)
-                    else : 
-                        perso.drink(item)
-                elif event.key == pg.K_3:
-                    item = perso.inventory[2]
-                    if type(item) == equipment:
+                else : 
+                    perso.drink(item)
+            if event.key == pg.K_3:
+                item = perso.inventory[2]
+                if item in dico_equip.keys():
                         perso.equip(item)
-                    else : 
-                        perso.drink(item)
-                elif event.key == pg.K_4:
-                    item = perso.inventory[3]
-                    if type(item) == equipment:
+                else : 
+                    perso.drink(item)
+            if event.key == pg.K_4:
+                item = perso.inventory[3]
+                if item in dico_equip.keys():
                         perso.equip(item)
-                    else : 
-                        perso.drink(item)
-                elif event.key == pg.K_5:
-                    item = perso.inventory[4]
-                    if type(item) == equipment:
+                else : 
+                    perso.drink(item)
+            if event.key == pg.K_5:
+                item = perso.inventory[4]
+                if item in dico_equip.keys():
                         perso.equip(item)
-                    else : 
-                        perso.drink(item)
-                elif event.key == pg.K_6:
-                    item = perso.inventory[5]
-                    if type(item) == equipment:
+                else : 
+                    perso.drink(item)
+            if event.key == pg.K_6:
+                item = perso.inventory[5]
+                if item in dico_equip.keys():
                         perso.equip(item)
-                    else : 
-                        perso.drink(item)
-                elif event.key == pg.K_7:
-                    item = perso.inventory[6]
-                    if type(item) == equipment:
+                else : 
+                    perso.drink(item)
+            if event.key == pg.K_7:
+                item = perso.inventory[6]
+                if item in dico_equip.keys():
                         perso.equip(item)
-                    else : 
-                        perso.drink(item)
-                elif event.key == pg.K_8:
-                    item = perso.inventory[7]
-                    if type(item) == equipment:
+                else : 
+                    perso.drink(item)
+            if event.key == pg.K_8:
+                item = perso.inventory[7]
+                if item in dico_equip.keys():
                         perso.equip(item)
-                    else : 
-                        perso.drink(item)
-                elif event.key == pg.K_9:
-                    item = perso.inventory[8]
-                    if type(item) == equipment:
+                else : 
+                    perso.drink(item)
+            if event.key == pg.K_9:
+                item = perso.inventory[8]
+                if item in dico_equip.keys():
                         perso.equip(item)
-                    else : 
-                        perso.drink(item)
+                else : 
+                    perso.drink(item)            
 
+
+            
     
-    
-
-
-
-## NOUVELLE PARTIE 
-
     if list_map[i_0][j_0] == "o" :
         stritem = list_interactions[i_0][j_0]
         item = dico_equip[stritem]
-        perso.inventory.append(item) 
+        perso.inventory.append(stritem) 
         pg.display.update()
-        txt = font.render(str(item), False, (255, 255, 255))
+        txt = font.render(stritem, False, (255, 255, 255))
         screen.blit(txt,(500,500))
         pg.display.update()
         print (f"vous avez gagné {print(item)}")
         
         list_map[i_0][j_0] = "."
         list_interactions[i_0][j_0] = 0
-        
-
-    pg.display.update()
-    screen.fill((0, 0, 0))
 
 
     if list_map[i_0][j_0] == "$" :
-        perso.money += list_interactions[charact_pos]
-        print (f"vous avez gagné {list_interactions[charact_pos]}")
+        perso.money += list_interactions[i_0][j_0]
+        print (f"vous avez gagné {list_interactions[i_0][j_0]}")
 
     if list_map[i_0][j_0] == "M" : 
         strmonstre = list_interactions[i_0][j_0]
@@ -202,38 +215,16 @@ while running:
         list_interactions[i_0][j_0] = 0
         if perso.hp > 0 :
             perso.grab_money(20)  # gagne de l'argent lorsqu'il tue un monstre
+            txt = font.render("vous avez gagné, voici 20$ en récompense", False, (255, 255, 255))
+            screen.blit(txt,(500,500))
+            pg.display.update()
             print ("vous avez gagné, voici 20$ en récompense")
         else : 
             print ("vous etes mort") # Il faut stop le programme 
 
-    """
-    if list_map[charact_pos[0]][charact_pos[1]] == "µ" :
-        strmarchand = dico_map[charact_pos]
-        marchand = dico_marchand[strmarchand]
-        #marchand.open_inventory()
 
-        #item = #selection de l'item
 
-        running = True
-        while running : 
-            clock.tick(5)
-            for event2 in pg.event.get() :
-                if event.key == pq.K_p :
-                    running = False
-                if event.key == pq.K_Y :
-                    text = font.render("test", 1, (255, 255, 255))
-                    screen.blit(text, charact_pos)
-
-        echange(perso,marchand,item)
-
-        print(f"vous avez acheté l'objet {print(item)}")
-    """
     pg.display.update()
     screen.fill((0, 0, 0))
 
-    
 pg.quit()
-
-
-
-    
