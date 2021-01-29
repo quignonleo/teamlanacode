@@ -1,6 +1,6 @@
 import pygame as pg
 import numpy as np
-
+from character2 import * 
 
 class character :
 
@@ -30,7 +30,19 @@ class character :
                 self.equipment[nature] = item
                 item.apply(self)
             
-    
+    def drink(self, potion):
+        potion.apply(self)
+        self.inventory.remove(potion)
+
+    def grab_money(self, new_money):
+        self.money += new_money
+
+    def echange(self, pnj, montant, item):
+        self.money -= montant
+        pnj.money += montant
+        self.inventory.append(item)
+        pnj.inventory.remove(item)
+
 
                 
 
