@@ -6,13 +6,13 @@ from dictionnaires import *
 from character2 import *
 from character import *
 
-perso = character(100,[],[],100)
 
 pg.init()
 screen = pg.display.set_mode((1000, 700))
 screen.fill((0, 0, 0))
 clock = pg.time.Clock()
 
+perso = character(100,[],[],100)
 
 font=pg.font.Font('freesansbold.ttf', 20)
 
@@ -25,7 +25,7 @@ with open('map_finale.txt', 'r') as file:
     n = len(list_map)
 
 
-
+# On remplit ici la map d'objets, marchands et monstres
 
 liste_endroits_possibles = []
 liste_endroits_possibles_monstres = []
@@ -35,14 +35,23 @@ for i in range (n):
             liste_endroits_possibles.append((i,j))
         if list_map[i][j] == "#":
             liste_endroits_possibles_monstres.append((i,j))
+
+#Objet n°1            
 pos = choice(liste_endroits_possibles)
+liste_endroits_possibles.remove(pos)
 list_interactions[pos[0]][pos[1]] = choice(list(dico_equip.keys()))
 list_map[pos[0]][pos[1]] = "o"
-print(pos)
+#Objet n°2
 pos = choice(liste_endroits_possibles)
-print(pos)
+liste_endroits_possibles.remove(pos)
 list_interactions[pos[0]][pos[1]] = choice(list(dico_equip.keys()))
 list_map[pos[0]][pos[1]] = "o"
+#Marchand
+pos = choice(liste_endroits_possibles)
+liste_endroits_possibles.remove(pos)
+list_interactions[pos[0]][pos[1]] = choice(list(dico_marchand.keys()))
+list_map[pos[0]][pos[1]] = "µ"
+#Monstre
 pos = choice(liste_endroits_possibles_monstres)
 list_interactions[pos[0]][pos[1]] = choice(list(dico_monstres.keys()))
 list_map[pos[0]][pos[1]] = "M"
@@ -92,12 +101,6 @@ while running:
                 what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
                 #charact_pos = (i_0, j_0+1)
     
-    
-
-
-
-## NOUVELLE PARTIE 
-
     if list_map[i_0][j_0] == "o" :
         stritem = list_interactions[i_0][j_0]
         item = dico_equip[stritem]
@@ -110,10 +113,6 @@ while running:
         
         list_map[i_0][j_0] = "."
         list_interactions[i_0][j_0] = 0
-        
-
-    pg.display.update()
-    screen.fill((0, 0, 0))
 
 
     if list_map[i_0][j_0] == "$" :
@@ -137,21 +136,20 @@ while running:
         else : 
             print ("vous etes mort") # Il faut stop le programme 
 
-
     if list_map[i_0][j_0] == "µ" :
         strmarchand = list_interactions[i_0][j_0]
         marchand = dico_marchand[strmarchand]
-        #marchand.open_inventory()
 
-        #item = #selection de l'item
+        #ouverture de l'inventaire à faire
 
-        running = True
+        running2 = True
         while running : 
             clock.tick(5)
+            
             for event2 in pg.event.get() :
-                if event.key == pq.K_p :
-                    running = False
-                if event.key == pq.K_Y :
+                if event2.key == pg.K_p :
+                    running2 = False
+                if event2.key == pg.K_Y :
                     text = font.render("test", 1, (255, 255, 255))
                     screen.blit(text, charact_pos)
 
@@ -159,12 +157,11 @@ while running:
 
         print(f"vous avez acheté l'objet {print(item)}")
 
+    
+
     pg.display.update()
     screen.fill((0, 0, 0))
 
-    
 pg.quit()
 
 
-
-    
