@@ -132,13 +132,17 @@ while running:
                 screen.blit(txt,(500,500))
                 pg.display.update()
                 print (f"vous avez gagné {print(item)}")
-                
                 list_map[i_0][j_0] = "."
                 list_interactions[i_0][j_0] = 0
 
 
             if list_map[i_0][j_0] == "$" :
                 perso.money += list_interactions[i_0][j_0]
+                list_map[i_0][j_0] = "."
+                list_interactions[i_0][j_0] = 0
+                text = font.render(f"vous avez gagné{list_interactions[i_0][j_0]}", 1, (255, 255, 255))
+                screen.blit(text, (500,500))
+                pg.display.update()
                 print(f"vous avez gagné {list_interactions[i_0][j_0]}")
 
             if list_map[i_0][j_0] == "M" : 
