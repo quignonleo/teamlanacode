@@ -61,7 +61,7 @@ class pnj:
         textsurface = myfont.render('Some Text', False, (0, 0, 0)) 
         screen.blit(textsurface,(0,0))
 
-"""
+
 dico_equip = {
 "anneau_vie": equipment("anneau", 0, 0, 10),
 "épée longue":equipment("arme",10,0,0),
@@ -78,4 +78,3 @@ dico_equip = {
 "perruque coupe mulet":equipment("casque", 5, 10, 5),
 "vaccin contre le COVID" : equipment("arme", 50, 50, -50)
 }
-"""
