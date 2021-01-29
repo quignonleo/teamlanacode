@@ -126,6 +126,8 @@ while running:
         combat = fight(perso,monstre)
         while combat.check():
             combat.turn()
+        list_map[i_0][j_0] = "."
+        list_interactions[i_0][j_0] = 0
         if perso.hp > 0 :
             perso.grab_money(20)  # gagne de l'argent lorsqu'il tue un monstre
             print ("vous avez gagné, voici 20$ en récompense")
