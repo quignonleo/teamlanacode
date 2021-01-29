@@ -102,32 +102,37 @@ while running:
         stritem = list_interactions[i_0][j_0]
         item = dico_equip[stritem]
         perso.inventory.append(item) 
+        pg.display.update()
+        txt = font.render(str(item), False, (255, 255, 255))
+        screen.blit(txt,(500,500))
+        pg.display.update()
         print (f"vous avez gagné {print(item)}")
         
         list_map[i_0][j_0] = "."
         list_interactions[i_0][j_0] = 0
+        
 
     pg.display.update()
     screen.fill((0, 0, 0))
 
-"""
-    if list_map[charact_pos[0]][charact_pos[1]] == "$" :
-        perso.money += array_map[charact_pos]
-        print (f"vous avez gagné {dico_map[charact_pos]}")
 
-    if list_map[charact_pos[0]][charact_pos[1]] == "M" : 
-        strmonstre = array_map[charact_pos]
-        monstre = dico_monstre[strmonstre]
+    if list_map[i_0][j_0] == "$" :
+        perso.money += list_interactions[charact_pos]
+        print (f"vous avez gagné {list_interactions[charact_pos]}")
+
+    if list_map[i_0][j_0] == "M" : 
+        strmonstre = list_interactions[i_0][j_0]
+        monstre = dico_monstres[strmonstre]
         combat = fight(perso,monstre)
         while combat.check():
             combat.turn()
         if perso.hp > 0 :
-            self.character.money += 20  # gagne de l'argent lorsqu'il tue un monstre
+            perso.grab_money(20)  # gagne de l'argent lorsqu'il tue un monstre
             print ("vous avez gagné, voici 20$ en récompense")
         else : 
             print ("vous etes mort") # Il faut stop le programme 
 
-
+"""
     if list_map[charact_pos[0]][charact_pos[1]] == "µ" :
         strmarchand = dico_map[charact_pos]
         marchand = dico_marchand[strmarchand]
