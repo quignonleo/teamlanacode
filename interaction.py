@@ -130,13 +130,16 @@ while running:
         list_interactions[i_0][j_0] = 0
         if perso.hp > 0 :
             perso.grab_money(20)  # gagne de l'argent lorsqu'il tue un monstre
+            txt = font.render("vous avez gagné, voici 20$ en récompense", False, (255, 255, 255))
+            screen.blit(txt,(500,500))
+            pg.display.update()
             print ("vous avez gagné, voici 20$ en récompense")
         else : 
             print ("vous etes mort") # Il faut stop le programme 
 
-"""
-    if list_map[charact_pos[0]][charact_pos[1]] == "µ" :
-        strmarchand = dico_map[charact_pos]
+
+    if list_map[i_0][j_0] == "µ" :
+        strmarchand = list_interactions[i_0][j_0]
         marchand = dico_marchand[strmarchand]
         #marchand.open_inventory()
 
@@ -158,7 +161,7 @@ while running:
 
     pg.display.update()
     screen.fill((0, 0, 0))
-"""
+
     
 pg.quit()
 
