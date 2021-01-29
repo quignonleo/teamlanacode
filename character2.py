@@ -30,3 +30,18 @@ class equipment :
         char.deff = char.deff - self.deff
 
 
+class monster : 
+    def __init__ (self, atk, deff,vie) : 
+        self.atk = atk
+        self.deff = deff
+        self.vie = vie
+    
+    def hp_modiff(self,vie):
+        "la vie peut être négative ici"
+        self.vie = self.vie + vie
+
+class pnj : 
+    
+    def __init__ (self,inventory,money):
+        self.money = money
+        self.inventory = inventory
