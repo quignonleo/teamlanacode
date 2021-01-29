@@ -15,7 +15,7 @@ clock = pg.time.Clock()
 
 
 font=pg.font.Font('freesansbold.ttf', 20)
-levels = os.listdir("teamlanacode\levels")
+levels = os.listdir("levels")
 running = True
 
 
@@ -26,7 +26,7 @@ while running:
         nb_level += 1
         what_it_replaces = '.'
         
-        with open("teamlanacode/levels/" + levels[0], 'r') as file:
+        with open("levels/" + levels[0], 'r') as file:
             list_map = []
             list_interactions = []
             for line in file:
@@ -55,7 +55,7 @@ while running:
         list_interactions[pos[0]][pos[1]] = choice(list(dico_monstres.keys()))
         list_map[pos[0]][pos[1]] = "M" """
 
-        while what_it_replaces != '=':
+        while what_it_replaces != '=' and running:
 
             text = font.render(f'LEVEL {nb_level}', 1, (255, 165, 0))
             screen.blit(text, (20, 20))
