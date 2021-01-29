@@ -3,12 +3,20 @@ import numpy as np
 import character
 
 
-Dico_equip = {"Modele":(nature,atk,deff,hp),
-"anneau_vie":("anneau",0,0,10),
-"épée longue":("épée",10,0,0),
-"bouclier en bois":("bouclier",0,10,0),
-"casque de mineur":("casque",0,4,0),
-"armure de fer":("armure",0,15,0)
+Dico_equip = {
+"anneau_vie": equipment("anneau", 0, 0, 10),
+"épée longue":equipment("arme",10,0,0),
+"bouclier en bois":equipment("bouclier",0,10,0),
+"casque de mineur":equipment("casque",0,4,0),
+"armure de fer":equipment("armure",0,15,0)
+"pistolet laser":equipment("arme", 20, 0, 0)
+"maillot de l'OM":equipment("armure",1, 10, 15)
+"bob coloré":equipment("casque", 0, 14, 0)
+"porte de la meuh":equipment("bouclier", 10, 20, 0)
+"épée porteuse du tétanos":equipment("arme", 40, 0, -10)
+"foudre de Zeus":equipment("arme", 30, 0, 0)
+"grosse chevalière":equipment("anneau", 10, 0, 8)
+"perruque coupe mulet":equipment("casque", 5, 10, 5)
 }
 
 class Potion : 
@@ -25,11 +33,14 @@ class Potion :
 
 class equipment : 
 
-    def __init__(self, atk, deff,nature,nom): 
+    def __init__(self, nature, atk, deff, hp): 
         self.atk = atk
         self.deff = deff 
         self.nature = nature
-        
+        self.hp = hp
+
+    def __repr__(self):
+        return f"nature : {self.nature}, attaque : {self.atk}, défense : {self.deff}"        
     
     def apply(self, char):
         char.atk = char.atk + self.atk

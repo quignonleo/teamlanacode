@@ -9,7 +9,7 @@ class character :
         self.inventory = inventory
         self.equipment = equipment 
         self.money = money 
-        self.atk = 1
+        self.atk = 10
         self.deff = 0
         self.quickness = 5
         self.name = ''
