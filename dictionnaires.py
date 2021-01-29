@@ -1,9 +1,7 @@
-from character2 import * 
-from random import choice
 from dictionnaires import *
 from character2 import *
-from character import * 
-from interaction import *
+from character import *
+from random import choice
 
 
 dico_monstres = {
