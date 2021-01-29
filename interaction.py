@@ -132,6 +132,7 @@ while running:
             txt = font.render("vous avez gagné, voici 20$ en récompense", False, (255, 255, 255))
             screen.blit(txt,(500,500))
             pg.display.update()
+            
             print ("vous avez gagné, voici 20$ en récompense")
         else : 
             print ("vous etes mort") # Il faut stop le programme 
@@ -143,15 +144,15 @@ while running:
         #ouverture de l'inventaire à faire
 
         running2 = True
-        while running : 
+        while running2 : 
             clock.tick(5)
-            
-            for event2 in pg.event.get() :
-                if event2.key == pg.K_p :
-                    running2 = False
-                if event2.key == pg.K_Y :
-                    text = font.render("test", 1, (255, 255, 255))
-                    screen.blit(text, charact_pos)
+            if event.type == pg.KEYDOWN:
+                for event2 in pg.event.get() :
+                    if event.type == pg.QUIT:
+                        running = False
+                    """if event2.key == pg.K_y :
+                        text = font.render("test", 1, (255, 255, 255))
+                        screen.blit(text, charact_pos)"""
 
         echange(perso,marchand,item)
 
