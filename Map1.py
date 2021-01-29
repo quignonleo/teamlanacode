@@ -17,6 +17,8 @@ with open('map_finale.txt', 'r') as file:
         list_map.append([x for x in line if x != '\n'])
     n = len(list_map)
 
+
+what_it_replaces = '.'
 running = True 
 while running:
     clock.tick(5)
@@ -31,7 +33,7 @@ while running:
             
 
 
-    what_it_replaces = '.' #on part du principe qu'à la bas il n'est pas dans un couloir
+     #on part du principe qu'à la bas il n'est pas dans un couloir
     i_0, j_0 = charact_pos
     for event in pg.event.get():
 
@@ -61,5 +63,6 @@ while running:
                 #charact_pos = (i_0, j_0+1)
     
     pg.display.update()
+    screen.fill((0, 0, 0))
 
 pg.quit()
