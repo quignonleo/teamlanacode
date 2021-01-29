@@ -1,5 +1,6 @@
 import pygame as pg
 
+
 pg.init()
 screen = pg.display.set_mode((1000, 700))
 screen.fill((0, 0, 0))
@@ -20,6 +21,9 @@ while running:
                     text = font.render(symbole, 1, (255, 165, 0))
 
                     screen.blit(text, (j*20 + 100, i*20 + 150))
+
+
+
 
     for event in pg.event.get():
 
