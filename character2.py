@@ -2,6 +2,15 @@ import numpy as np
 
 import character
 
+
+Dico_equip = {"Modele":(nature,atk,deff,hp),
+"anneau_vie":("anneau",0,0,10),
+"épée longue":("épée",10,0,0),
+"bouclier en bois":("bouclier",0,10,0),
+"casque de mineur":("casque",0,4,0),
+"armure de fer":("armure",0,15,0)
+}
+
 class Potion : 
 
     def __init__ (self,hp,atk,deff) : 
@@ -16,10 +25,11 @@ class Potion :
 
 class equipment : 
 
-    def __init__(self, atk, deff,nature): 
+    def __init__(self, atk, deff,nature,nom): 
         self.atk = atk
         self.deff = deff 
         self.nature = nature
+        
     
     def apply(self, char):
         char.atk = char.atk + self.atk
@@ -31,17 +41,19 @@ class equipment :
 
 
 class monster : 
-    def __init__ (self, atk, deff,vie) : 
+    def __init__ (self, atk, deff,hp,vitesse) : 
         self.atk = atk
         self.deff = deff
-        self.vie = vie
+        self.hp = hp
+        self.vitesse = vitesse
     
     def hp_modiff(self,vie):
         "la vie peut être négative ici"
-        self.vie = self.vie + vie
+        self.hp = self.hp + vie
+
 
 class pnj : 
-    
+
     def __init__ (self,inventory,money):
         self.money = money
         self.inventory = inventory
