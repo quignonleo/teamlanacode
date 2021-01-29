@@ -16,6 +16,8 @@ class Potion:
         char.hp = char.hp + self.bonus_hp
         char.atk = char.atk + self.bonus_atk
         char.deff = char.deff + self.bonus_deff
+    def __repr__(self) :
+        return(f"bonus HP : {self.bonus_hp}, bonus atk : {self.bonus_atk}, bonus deff : {self.bonus_deff}")
 
 class equipment: 
 
@@ -54,7 +56,12 @@ class pnj:
     def __init__ (self,inventory,money):
         self.money = money
         self.inventory = inventory
+    
+    def open_invetory(self) :
+        textsurface = myfont.render('Some Text', False, (0, 0, 0)) 
+        screen.blit(textsurface,(0,0))
 
+"""
 dico_equip = {
 "anneau_vie": equipment("anneau", 0, 0, 10),
 "épée longue":equipment("arme",10,0,0),
@@ -71,3 +78,4 @@ dico_equip = {
 "perruque coupe mulet":equipment("casque", 5, 10, 5),
 "vaccin contre le COVID" : equipment("arme", 50, 50, -50)
 }
+"""

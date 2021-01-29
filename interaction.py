@@ -1,59 +1,83 @@
 import pygame as pg
 import sys
-import character2
+import numpy as np
+from character2 import *
+from character import *
 
-clock = pg.time.clock()
- ###
-perso = character(100, [], [], 100)
- ####
-while True:
+pg.init()
+screen = pg.display.set_mode((1000, 700))
+screen.fill((0, 0, 0))
+clock = pg.time.Clock()
 
+perso = character(100,[],[],100)
+
+font=pg.font.Font('freesansbold.ttf', 20)
+
+with open('map_finale.txt', 'r') as file:
+    list_map = []
+    for line in file:
+        list_map.append([x for x in line if x != '\n'])
+    n = len(list_map)
+
+
+what_it_replaces = '.'
+running = True 
+while running:
     clock.tick(5)
 
-    charact_position = (i, j)
-    what_it_replaces = '.' #on part du principe qu'à la bas il n'est pas dans un couloir
+    for i in range(n):
+        for j in range(len(list_map[i])):
+            if list_map[i][j] in ['.', '|', '-', '=', '+', '#', '@']:
+                text = font.render(list_map[i][j], 1, (255, 165, 0))
+                screen.blit(text, (j*20 + 100, i*20 + 150))
+            if list_map[i][j] == '@':
+                charact_pos = (i, j)
+            
 
+
+     #on part du principe qu'à la bas il n'est pas dans un couloir
+    i_0, j_0 = charact_pos
     for event in pg.event.get():
+
         if event.type == pg.QUIT:
-            pg.quit()
-            sys.exit(0)
-    
-    keys = pg.keys.get_pressed()
+            running = False
+        
+        if event.type == pg.KEYDOWN:
 
-#on suppose que les éléments sont stockés dans un array nommé "screen"
-    if key[pg.K_LEFT] and screen[i-1, j] not in [' ', '|', '-']:
-        screen[i-1, j], screen[i, j] = screen[i, j], screen[i-1, j]
-        what_it_replaces, screen[i, j] = screen[i, j], what_it_replaces
-        charact_pos = charact_pos.move(-1, 0)
-    
-    if key[pg.K_RIGHT] and screen[i+1, j] not in [' ', '|', '-']:
-        screen[i+1, j], screen[i, j] = screen[i, j], screen[i+1, j]
-        what_it_replaces, screen[i, j] = screen[i, j], what_it_replaces
-        charact_pos = charact_pos.move(1, 0)
+    #on suppose que les éléments sont stockés dans un list nommé "screen"
+            if event.key == pg.K_q and list_map[i_0][j_0-1] not in ['a', '|', '-']:
+                list_map[i_0][j_0-1], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0][j_0-1]
+                what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
+            
+            if event.key == pg.K_d and list_map[i_0][j_0+1] not in ['a', '|', '-']:
+                list_map[i_0][j_0+1], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0][j_0+1]
+                what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
+                #charact_pos = (i_0+1, j_0)
 
-    if key[pg.K_DOWN] and screen[i, j-1] not in [' ', '|', '-']:
-        screen[i, j-1], screen[i, j] = screen[i, j], screen[i, j-1]
-        what_it_replaces, screen[i, j] = screen[i, j], what_it_replaces
-        charact_pos = charact_pos.move(0, -1)
+            if event.key == pg.K_s and list_map[i_0+1][j_0] not in ['a', '|', '-']:
+                list_map[i_0+1][j_0], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0+1][j_0]
+                what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
+                #charact_pos = (i_0, j_0-1)
 
-    if key[pg.K_UP] and screen[i, j+1] not in [' ', '|', '-']:
-        screen[i, j+1], screen[i, j] = screen[i, j], screen[i, j+1]
-        what_it_replaces, screen[i, j] = screen[i, j], what_it_replaces
-        charact_pos = charact_pos.move(0, 1)
-    
+            if event.key == pg.K_z and list_map[i_0-1][j_0] not in ['a', '|', '-']:
+                list_map[i_0-1][j_0], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0-1][j_0]
+                what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
+                #charact_pos = (i_0, j_0+1)
+
 
 ## NOUVELLE PARTIE 
-    if screen[charact_pos] == "o" :
+
+    if list_map[charact_pos[0]][charact_pos[1]] == "o" :
         stritem = array_map[charact_pos]
         item = dico_equip[stritem]
         perso.inventory.append(item) 
         print (f"vous avez gagné {print(item)}")
     
-    if screen[charact_pos] == "$" :
+    if list_map[charact_pos[0]][charact_pos[1]] == "$" :
         perso.money += array_map[charact_pos]
         print (f"vous avez gagné {dico_map[charact_pos]}")
 
-    if screen[charact_pos] == "M" : 
+    if list_map[charact_pos[0]][charact_pos[1]] == "M" : 
         strmonstre = array_map[charact_pos]
         monstre = dico_monstre[strmonstre]
         combat = fight(perso,monstre)
@@ -66,9 +90,31 @@ while True:
             print ("vous etes mort") # Il faut stop le programme 
 
 
-    if screen[charact_pos] == "µ" :
+    if list_map[charact_pos[0]][charact_pos[1]] == "#" :
         strmarchand = dico_map[charact_pos]
-        
+        marchand = dico_marchand[strmarchand]
+        #marchand.open_inventory()
+
+        #item = #selection de l'item
+
+        running = True
+        while running : 
+            clock.tick(5)
+            for event2 in pg.event.get() :
+                if event.key == pq.K_p :
+                    running = False
+                if event.key == pq.K_Y :
+                    text = font.render("test", 1, (255, 255, 255))
+                    screen.blit(text, charact_pos)
+
+        echange(perso,marchand,item)
+
+        print(f"vous avez acheté l'objet {print(item)}")
+
+    pg.display.update()
+    screen.fill((0, 0, 0))
+
+pg.quit()
 
 
 

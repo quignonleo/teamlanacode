@@ -73,6 +73,6 @@ class fight :
             print("coup raté") # a afficher à l'écran
 
     def check(self):
-        self.character.money += 20  # gagne de l'argent lorsqu'il tue un monstre
+        
         return self.monster.hp > 0 and self.character.hp > 0  
  
