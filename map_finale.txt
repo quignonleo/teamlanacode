@@ -1,15 +1,15 @@
-                 --               
-                |..|                   
-                |..+###                  
-  -----         |..|  #  ####### -            
-#+...@.|    ### |..|  #  #     #|.|        
-#|.....|   ## ##+..|  #  #     #|.|               
-#|.....+####     --   #  #    ##|.|   
-# -----             ### -+    #-..|     
-######           ####  |..|   #|..|
-     ####  ###   #     |..|   #|.. ---
-        #  # #   #    -...|   #+......|
-        #### #   ####+....|    |.. ---
-             #       |....|    |.=|
-             #        ----      -+ 
-             #####################
+aaaaaaaaaaaaaaaaa--aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaa|..|aaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaa|..+###aaaaaaaaaaaaaaaa
+aa-----aaaaaaaaa|..|aa#aa#######a-aaaaa
+#+...@.|aaaa###a|..|aa#aa#aaaaa#|.|aaaa
+#|.....|aaa##a##+..|aa#aa#aaaaa#|.|aaaa
+#|.....+####aaaaa--aaa#aa#aaaa##|.|aaaa
+#a-----aaaaaaaaaaaaa###a-+aaaa#-..|aaaa
+######aaaaaaaaaaa####aa|..|aaa#|..|aaaa
+aaaaa####aa###aaa#aaaaa|..|aaa#|..a---a
+aaaaaaaa#aa#a#aaa#aaaa-...|aaa#+......|
+aaaaaaaa####a#aaa####+....|aaaa|..a---a
+aaaaaaaaaaaaa#aaaaaaa|....|aaaa|.=|aaaa
+aaaaaaaaaaaaa#aaaaaaaa----aaaaaa-+aaaaa
+aaaaaaaaaaaaa#####################aaaaa

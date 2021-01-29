@@ -1,5 +1,6 @@
 import pygame as pg
 import sys
+import numpy as np
 
 
 pg.init()
@@ -14,19 +15,26 @@ running = True
 while running:
     clock.tick(5)
 
-    with open('map_finale.txt', 'r') as f:
-        F = f.readlines()
-        for i, ligne in enumerate(F):
-            ligne.strip
-            for j, symbole in enumerate(ligne):
-                if symbole in ['.', '|', '-', '=', '+', '#', '@']:
-                    text = font.render(symbole, 1, (255, 165, 0))
-                    screen.blit(text, (j*20 + 100, i*20 + 150))
-                if symbole == '@':
-                    charact_position = (j*20 + 100, i*20 + 150)
+
+    with open('map_finale.txt', 'r') as file:
+        board = []
+        for line in file:
+            board.append([x for x in line if x != '\n'])
+        array_map = np.array(board)
+
+    width, length = array_map.shape
+
+    for i in range(width):
+        for j in range(length):
+            if array_map[i, j] in ['.', '|', '-', '=', '+', '#', '@']:
+                text = font.render(array_map[i, j], 1, (255, 165, 0))
+                screen.blit(text, (j*20 + 100, i*20 + 150))
+            if array_map[i, j] == '@':
+                charact_pos = (j*20 + 100, i*20 + 150)
+            
 
 
-
+    what_it_replaces = '.' #on part du principe qu'à la bas il n'est pas dans un couloir
 
 
     for event in pg.event.get():
@@ -34,31 +42,29 @@ while running:
         if event.type == pg.QUIT:
             running = False
         
-        keys = pg.keys.get_pressed()
-        
-        what_it_replaces = '.' #on part du principe qu'à la bas il n'est pas dans un couloir
+        if event.type == pg.KEYDOWN:
 
     #on suppose que les éléments sont stockés dans un array nommé "screen"
-        if key[pg.K_LEFT] and screen[i-20, j] not in [' ', '|', '-']:
-            screen[i-20, j], screen[i, j] = screen[i, j], screen[i-20, j]
-            what_it_replaces, screen[i, j] = screen[i, j], what_it_replaces
-            charact_pos = charact_pos.move(-20, 0)
+            if event.key == pg.K_LEFT and array_map[i-20, j] not in [' ', '|', '-']:
+                array_map[i-20, j], array_map[i, j] = array_map[i, j], array_map[i-20, j]
+                what_it_replaces, array_map[i, j] = array_map[i, j], what_it_replaces
+                charact_pos = (i-20, j)
+            
+            if event.key == pg.K_RIGHT and array_map[i+20, j] not in [' ', '|', '-']:
+                array_map[i+20, j], array_map[i, j] = array_map[i, j], array_map[i+20, j]
+                what_it_replaces, array_map[i, j] = array_map[i, j], what_it_replaces
+                charact_pos = (i+20, j)
+
+            if event.key == pg.K_DOWN and array_map[i, j-20] not in [' ', '|', '-']:
+                array_map[i, j-20], array_map[i, j] = array_map[i, j], array_map[i, j-20]
+                what_it_replaces, array_map[i, j] = array_map[i, j], what_it_replaces
+                charact_pos = (i, j-20)
+
+            if event.key == pg.K_UP and array_map[i, j+20] not in [' ', '|', '-']:
+                array_map[i, j+20], array_map[i, j] = array_map[i, j], array_map[i, j+20]
+                what_it_replaces, array_map[i, j] = array_map[i, j], what_it_replaces
+                charact_pos = (i, j+20)
         
-        if key[pg.K_RIGHT] and screen[i+20, j] not in [' ', '|', '-']:
-            screen[i+20, j], screen[i, j] = screen[i, j], screen[i+20, j]
-            what_it_replaces, screen[i, j] = screen[i, j], what_it_replaces
-            charact_pos = charact_pos.move(20, 0)
-
-        if key[pg.K_DOWN] and screen[i, j-20] not in [' ', '|', '-']:
-            screen[i, j-20], screen[i, j] = screen[i, j], screen[i, j-20]
-            what_it_replaces, screen[i, j] = screen[i, j], what_it_replaces
-            charact_pos = charact_pos.move(0, -20)
-
-        if key[pg.K_UP] and screen[i, j+20] not in [' ', '|', '-']:
-            screen[i, j+20], screen[i, j] = screen[i, j], screen[i, j+20]
-            what_it_replaces, screen[i, j] = screen[i, j], what_it_replaces
-            charact_pos = charact_pos.move(0, 20)
-    
     
 
     
