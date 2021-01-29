@@ -12,6 +12,7 @@ screen = pg.display.set_mode((1000, 700))
 screen.fill((0, 0, 0))
 clock = pg.time.Clock()
 
+perso = character(100,[],[],100)
 
 font=pg.font.Font('freesansbold.ttf', 20)
 
@@ -99,8 +100,44 @@ while running:
                 list_map[i_0-1][j_0], list_map[i_0][j_0] = list_map[i_0][j_0], list_map[i_0-1][j_0]
                 what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
                 #charact_pos = (i_0, j_0+1)
-
     
+    if list_map[i_0][j_0] == "o" :
+        stritem = list_interactions[i_0][j_0]
+        item = dico_equip[stritem]
+        perso.inventory.append(item) 
+        pg.display.update()
+        txt = font.render(str(item), False, (255, 255, 255))
+        screen.blit(txt,(500,500))
+        pg.display.update()
+        print (f"vous avez gagné {print(item)}")
+        
+        list_map[i_0][j_0] = "."
+        list_interactions[i_0][j_0] = 0
+
+
+    if list_map[i_0][j_0] == "$" :
+        perso.money += list_interactions[charact_pos]
+        print (f"vous avez gagné {list_interactions[charact_pos]}")
+
+    if list_map[i_0][j_0] == "M" : 
+        strmonstre = list_interactions[i_0][j_0]
+        monstre = dico_monstres[strmonstre]
+        combat = fight(perso,monstre)
+        while combat.check():
+            combat.turn()
+        list_map[i_0][j_0] = "."
+        list_interactions[i_0][j_0] = 0
+        if perso.hp > 0 :
+            perso.grab_money(20)  # gagne de l'argent lorsqu'il tue un monstre
+            txt = font.render("vous avez gagné, voici 20$ en récompense", False, (255, 255, 255))
+            screen.blit(txt,(500,500))
+            pg.display.update()
+            print ("vous avez gagné, voici 20$ en récompense")
+        else : 
+            print ("vous etes mort") # Il faut stop le programme 
+
+
+
     pg.display.update()
     screen.fill((0, 0, 0))
 
