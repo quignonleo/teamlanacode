@@ -110,7 +110,7 @@ while running:
     pg.display.update()
     screen.fill((0, 0, 0))
 
-"""
+
     if list_map[charact_pos[0]][charact_pos[1]] == "$" :
         perso.money += array_map[charact_pos]
         print (f"vous avez gagné {dico_map[charact_pos]}")
@@ -151,7 +151,7 @@ while running:
 
     pg.display.update()
     screen.fill((0, 0, 0))
-"""
+
     
 pg.quit()
 
