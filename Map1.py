@@ -24,7 +24,7 @@ with open('map_finale.txt', 'r') as file:
     n = len(list_map)
 
 
-
+# On remplit ici la map d'objets, marchands et monstres
 
 liste_endroits_possibles = []
 liste_endroits_possibles_monstres = []
@@ -34,14 +34,23 @@ for i in range (n):
             liste_endroits_possibles.append((i,j))
         if list_map[i][j] == "#":
             liste_endroits_possibles_monstres.append((i,j))
+
+#Objet n°1            
 pos = choice(liste_endroits_possibles)
+liste_endroits_possibles.remove(pos)
 list_interactions[pos[0]][pos[1]] = choice(list(dico_equip.keys()))
 list_map[pos[0]][pos[1]] = "o"
-print(pos)
+#Objet n°2
 pos = choice(liste_endroits_possibles)
-print(pos)
+liste_endroits_possibles.remove(pos)
 list_interactions[pos[0]][pos[1]] = choice(list(dico_equip.keys()))
 list_map[pos[0]][pos[1]] = "o"
+#Marchand
+pos = choice(liste_endroits_possibles)
+liste_endroits_possibles.remove(pos)
+list_interactions[pos[0]][pos[1]] = choice(list(dico_marchand.keys()))
+list_map[pos[0]][pos[1]] = "µ"
+#Monstre
 pos = choice(liste_endroits_possibles_monstres)
 list_interactions[pos[0]][pos[1]] = choice(list(dico_monstres.keys()))
 list_map[pos[0]][pos[1]] = "M"
@@ -91,31 +100,6 @@ while running:
                 what_it_replaces, list_map[i_0][j_0] = list_map[i_0][j_0], what_it_replaces
                 #charact_pos = (i_0, j_0+1)
 
-        if list_map[i_0][j_0] == "o" :
-            stritem = array_map[i_0][j_0]
-            item = dico_equip[stritem]
-            perso.inventory.append(item) 
-            print (f"vous avez gagné {print(item)}")
-    
-        if list_map[i_0][j_0] == "$" :
-            perso.money += array_map[i_0][j_0]
-            print (f"vous avez gagné {list_interactions[i_0][j_0]}")
-
-        if list_map[i_0][j_0] == "M" : 
-            strmonstre = array_map[i_0][j_0]
-            monstre = dico_monstre[strmonstre]
-            combat = fight(perso,monstre)
-            while combat.check():
-                combat.turn()
-            if perso.hp > 0 :
-                self.character.money += 20  # gagne de l'argent lorsqu'il tue un monstre
-                print ("vous avez gagné, voici 20$ en récompense")
-            else : 
-                print ("vous etes mort") # Il faut stop le programme 
-
-
-        if list_map[i_0][j_0] == "µ" :
-            strmarchand = list_interactions[i_0][j_0]
     
     pg.display.update()
     screen.fill((0, 0, 0))

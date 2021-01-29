@@ -1,5 +1,9 @@
 from character2 import * 
 from random import choice
+from dictionnaires import *
+from character2 import *
+from character import * 
+from interaction import *
 
 
 dico_monstres = {
@@ -11,7 +15,7 @@ dico_monstres = {
     "Tibaldo Arrato Primo de la Manana de la Muerte de la Tolosa": monster(5, 50, 90, 5)
     }
 
-inventaire = [potion(10,10,10),equipment("épée",20,0,0)]
+inventaire = [Potion(10,10,10),equipment("épée",20,0,0)]
 
 dico_marchand = {
     "Elyes Kaak" : pnj(inventaire,100)
