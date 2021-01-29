@@ -12,7 +12,8 @@ screen = pg.display.set_mode((1000, 700))
 screen.fill((0, 0, 0))
 clock = pg.time.Clock()
 
-perso = character(100,[],[],100)
+perso = character(100, [], {}, 100)
+perso.name = "Ralf le Rouges"
 
 font=pg.font.Font('freesansbold.ttf', 20)
 
@@ -66,6 +67,19 @@ what_it_replaces = '.'
 running = True 
 while running:
     clock.tick(5)
+
+
+    vie = font.render(f'HP = {perso.hp}', 1, (255, 255, 255))
+    screen.blit(vie, (10, 580))
+    attaque = font.render(f'attaque = {perso.atk}', 1, (255, 255, 255))
+    screen.blit(attaque, (10, 600))
+    defense = font.render(f'défense = {perso.deff}', 1, (255, 255, 255))
+    screen.blit(defense, (10, 620))
+    equipement = font.render(f'équipement = {perso.equipment}', 1, (255, 255, 255))
+    screen.blit(equipement, (10, 640))
+    monaie = font.render(f'{perso.name} possède {perso.money} $', 1, (255, 255, 255))
+    screen.blit(monaie, (10, 660))
+
 
     for i in range(n):
         for j in range(len(list_map[i])):
@@ -121,8 +135,8 @@ while running:
 
 
     if list_map[i_0][j_0] == "$" :
-        perso.money += list_interactions[charact_pos]
-        print (f"vous avez gagné {list_interactions[charact_pos]}")
+        perso.money += list_interactions[i_0][j_0]
+        print (f"vous avez gagné {list_interactions[i_0][j_0]}")
 
     if list_map[i_0][j_0] == "M" : 
         strmonstre = list_interactions[i_0][j_0]
